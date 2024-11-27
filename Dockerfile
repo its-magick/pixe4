@@ -1,6 +1,6 @@
 # Base image with Python 3.11, PyTorch, CUDA 12.4.1, and Ubuntu 22.04
 FROM runpod/pytorch:2.4.0-py3.11-cuda12.4.1-devel-ubuntu22.04
-
+USER root
 # Set the working directory inside the container
 WORKDIR /workspace
 COPY node.sh /workspace/node.sh
