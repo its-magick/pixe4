@@ -1,0 +1,19 @@
+{
+  "name": "pixe4",
+  "version": "1.0.0",
+  "description": "--- title: Fp8 emoji: 💻 colorFrom: pink colorTo: gray sdk: gradio sdk_version: 5.5.0 app_file: main_gr.py pinned: false python_version: 3.11 ---",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ably": "^2.5.0",
+    "amqp": "^0.2.7",
+    "amqplib": "^0.10.4",
+    "axios": "^1.7.7",
+    "figlet": "^1.8.0",
+    "gradio": "^0.1.0"
+  }
+}
