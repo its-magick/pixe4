@@ -8,7 +8,29 @@ WORKDIR /workspace
 RUN apt-get update && apt-get install -y \
     wget \
     git \
+    curl \
     && rm -rf /var/lib/apt/lists/*
+
+RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v$INSTALL_NVM_VER/install.sh | bash && \
+    export NVM_DIR="$HOME/.nvm" && \
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && \
+    nvm install $INSTALL_NODE_VER && \
+    nvm alias default $INSTALL_NODE_VER && \
+    nvm use default
+
+# Set up environment for NVM
+ENV NVM_DIR /root/.nvm
+ENV NODE_VERSION $INSTALL_NODE_VER
+RUN echo "source $NVM_DIR/nvm.sh" >> /root/.bashrc
+
+# Install Node.js and npm
+RUN /bin/bash -c "source $NVM_DIR/nvm.sh && nvm install $NODE_VERSION && nvm alias default $NODE_VERSION && nvm use default"
+
+# Check versions and print binary paths
+RUN /bin/bash -c "source $NVM_DIR/nvm.sh && nvm --version && node --version && npm --version && which npm && which node"
+
+# Clear NVM cache and install npm packages
+RUN /bin/bash -c "source $NVM_DIR/nvm.sh && nvm cache clear && npm install"
 
 # Clone your repository
 RUN git clone https://huggingface.co/spaces/miike-ai/fp8
@@ -27,4 +49,4 @@ RUN wget https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/fl
 EXPOSE 8888 7860
 
 # Set the command to run your Python script
-CMD ["python", "main_gr.py"]
+CMD /bin/bash -c "source $NVM_DIR/nvm.sh && node index.js && gradio main_gr.py"
