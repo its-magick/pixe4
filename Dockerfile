@@ -20,12 +20,12 @@ RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v{$INSTALL_NVM_VER
     nvm use default
 
 # Set up environment for NVM
-ENV NVM_DIR /root/.nvm
-ENV NODE_VERSION $INSTALL_NODE_VER
+ENV NVM_DIR=/root/.nvm
+ENV NODE_VERSION=$INSTALL_NODE_VER
 RUN echo "source $NVM_DIR/nvm.sh" >> /root/.bashrc
 
 # Install Node.js and npm
-RUN /bin/bash -c "source $NVM_DIR/nvm.sh && nvm install $NODE_VERSION&& nvm alias default $NODE_VERSION&& nvm use default"
+RUN /bin/bash -c "source $NVM_DIR/nvm.sh && nvm install 22 && nvm alias default 22 && nvm use default"
 
 # Check versions and print binary paths
 RUN /bin/bash -c "source $NVM_DIR/nvm.sh && nvm --version && node --version && npm --version && which npm && which node"
