@@ -20,7 +20,7 @@ RUN /node.sh
 RUN git clone https://github.com/aredden/flux-fp8-api
 
 # Change directory to the cloned repo
-WORKDIR /workspace/flux-fp8-api
+WORKDIR /flux-fp8-api
 
 # Install Python dependencies
 RUN pip install -r requirements.txt
