@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y \
 ENV INSTALL_NODE_VER=22
 ENV INSTALL_NVM_VER=0.40.1
 
-RUN rm package-lock.json && /node.sh
+RUN /node.sh
 
 # Clone your repository
 RUN git clone https://github.com/aredden/flux-fp8-api
