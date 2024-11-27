@@ -12,25 +12,8 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 ENV INSTALL_NODE_VER=22
 ENV INSTALL_NVM_VER=0.40.1
-RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v{$INSTALL_NVM_VER}/install.sh | bash
-RUN source /root/.nvm/nvm.sh
-RUN nvm install $INSTALL_NODE_VER && \
-    nvm alias default $INSTALL_NODE_VER && \
-    nvm use default
 
-# Set up environment for NVM
-ENV NVM_DIR=/root/.nvm
-ENV NODE_VERSION=$INSTALL_NODE_VER
-RUN echo "source $NVM_DIR/nvm.sh" >> /root/.bashrc
-
-# Install Node.js and npm
-RUN nvm install 22 && nvm alias default 22 && nvm use default
-
-# Check versions and print binary paths
-RUN nvm --version && node --version && npm --version && which npm && which node
-
-# Clear NVM cache and install npm packages
-RUN npm install
+RUN ./node.sh
 
 # Clone your repository
 RUN git clone https://github.com/aredden/flux-fp8-api
