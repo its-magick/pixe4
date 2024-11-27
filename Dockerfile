@@ -13,8 +13,6 @@ RUN apt-get update && apt-get install -y \
 ENV INSTALL_NODE_VER=22
 ENV INSTALL_NVM_VER=0.40.1
 RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v{$INSTALL_NVM_VER}/install.sh | bash && \
-    export NVM_DIR="$HOME/.nvm" && \
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && \
     nvm install $INSTALL_NODE_VER && \
     nvm alias default $INSTALL_NODE_VER && \
     nvm use default
