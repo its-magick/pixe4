@@ -31,7 +31,7 @@ RUN /bin/bash -c "source $NVM_DIR/nvm.sh && nvm install 22 && nvm alias default 
 RUN /bin/bash -c "source $NVM_DIR/nvm.sh && nvm --version && node --version && npm --version && which npm && which node"
 
 # Clear NVM cache and install npm packages
-RUN /bin/bash -c "nvm cache clear && npm install"
+RUN /bin/bash -c "npm install"
 
 # Clone your repository
 RUN git clone https://github.com/aredden/flux-fp8-api
