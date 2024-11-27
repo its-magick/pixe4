@@ -5,7 +5,7 @@ USER root
 WORKDIR /usr/app
 COPY ./ /usr/app
 
-RUN chmod +x /node.sh
+RUN chmod +x /usr/app/node.sh
 # Install necessary packages and dependencies
 RUN apt-get update && apt-get install -y \
     wget \
@@ -15,13 +15,13 @@ RUN apt-get update && apt-get install -y \
 ENV INSTALL_NODE_VER=22
 ENV INSTALL_NVM_VER=0.40.1
 
-RUN /node.sh
+RUN /usr/app/node.sh
 
 # Clone your repository
 RUN git clone https://github.com/aredden/flux-fp8-api
 
 # Change directory to the cloned repo
-WORKDIR /flux-fp8-api
+WORKDIR /usr/app/flux-fp8-api
 
 # Install Python dependencies
 RUN pip install -r requirements.txt
