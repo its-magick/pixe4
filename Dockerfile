@@ -25,13 +25,13 @@ ENV NODE_VERSION=$INSTALL_NODE_VER
 RUN echo "source $NVM_DIR/nvm.sh" >> /root/.bashrc
 
 # Install Node.js and npm
-RUN /bin/bash -c "source $NVM_DIR/nvm.sh && nvm install 22 && nvm alias default 22 && nvm use default"
+RUN nvm install 22 && nvm alias default 22 && nvm use default
 
 # Check versions and print binary paths
-RUN /bin/bash -c "source $NVM_DIR/nvm.sh && nvm --version && node --version && npm --version && which npm && which node"
+RUN nvm --version && node --version && npm --version && which npm && which node
 
 # Clear NVM cache and install npm packages
-RUN /bin/bash -c "npm install"
+RUN npm install
 
 # Clone your repository
 RUN git clone https://github.com/aredden/flux-fp8-api
