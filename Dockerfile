@@ -26,8 +26,8 @@ WORKDIR /flux-fp8-api
 RUN pip install -r requirements.txt
 
 # Download the required model files
-RUN wget https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/flux1-schnell.safetensors -O /workspace/flux1-schnell.safetensors && \
-    wget https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/ae.safetensors -O /workspace/ae.safetensors
+RUN wget https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/flux1-schnell.safetensors -O /flux1-schnell.safetensors && \
+    wget https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/ae.safetensors -O /ae.safetensors
 
 # Expose necessary HTTP ports
 EXPOSE 8888 7860
