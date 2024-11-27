@@ -33,7 +33,7 @@ RUN /bin/bash -c "source $NVM_DIR/nvm.sh && nvm --version && node --version && n
 RUN /bin/bash -c "source $NVM_DIR/nvm.sh && nvm cache clear && npm install"
 
 # Clone your repository
-RUN git clone https://huggingface.co/spaces/miike-ai/fp8
+RUN git clone https://github.com/aredden/flux-fp8-api
 
 # Change directory to the cloned repo
 WORKDIR /workspace/fp8
