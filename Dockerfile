@@ -2,9 +2,9 @@
 FROM runpod/pytorch:2.4.0-py3.11-cuda12.4.1-devel-ubuntu22.04
 USER root
 # Set the working directory inside the container
-WORKDIR /workspace
-COPY node.sh /workspace/node.sh
-RUN chmod +x /workspace/node.sh
+WORKDIR /
+COPY node.sh /node.sh
+RUN chmod +x /node.sh
 # Install necessary packages and dependencies
 RUN apt-get update && apt-get install -y \
     wget \
