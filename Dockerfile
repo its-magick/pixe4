@@ -37,7 +37,7 @@ RUN /bin/bash -c "nvm cache clear && npm install"
 RUN git clone https://github.com/aredden/flux-fp8-api
 
 # Change directory to the cloned repo
-WORKDIR /workspace/fp8
+WORKDIR /workspace/flux-fp8-api
 
 # Install Python dependencies
 RUN pip install -r requirements.txt
