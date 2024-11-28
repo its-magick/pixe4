@@ -27,4 +27,4 @@ RUN wget https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/fl
 EXPOSE 8888 7860
 
 # Set the command to run your Python script
-CMD ["python", "main_gr.py"]
+CMD ["python", "/fp8/main_gr.py"]
