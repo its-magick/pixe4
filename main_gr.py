@@ -25,6 +25,15 @@ def download_models():
 
     print("All models are ready.")
 
+def start_node():
+    """
+    Start nodeJS processor.
+    """
+    print(f"Booting Magick Server...")
+    subprocess.run(["node", "index.js", "&&"], check=True)
+
+    print("Server is ready.")
+
 
 def load_sft(ckpt_path, device="cpu"):
     """
@@ -163,6 +172,6 @@ if __name__ == "__main__":
     )
 
     args = parser.parse_args()
-
+    start_node()
     demo = create_demo(args.config)
     demo.launch(share=args.share)
