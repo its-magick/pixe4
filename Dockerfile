@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Clone your repository
-RUN git clone https://huggingface.co/spaces/miike-ai/fp8
+RUN git clone https://github.com/Yuanshi9815/OminiControl
 
 # Change directory to the cloned repo
 WORKDIR /workspace/fp8
