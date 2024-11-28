@@ -15,11 +15,8 @@ RUN apt-get update && apt-get install -y \
     curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.40.1/install.sh | bash && \
     export NVM_DIR="$HOME/.nvm" && \
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && \
-    #nvm install 22 && \
-    nvm alias default 22 && \
-    nvm use default && \
     git clone https://github.com/aredden/flux-fp8-api
-    
+
 WORKDIR /workspace/flux-fp8-api
 
 RUN pip install -r requirements.txt
