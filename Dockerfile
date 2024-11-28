@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y \
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && \
     git clone https://github.com/aredden/flux-fp8-api
 
-WORKDIR /workspace/flux-fp8-api
+WORKDIR /flux-fp8-api
 
 RUN pip install -r requirements.txt
 
@@ -30,7 +30,7 @@ RUN wget https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/fl
 
 # Final stage to create the final image
 FROM base
-
+WORKDIR /workspace
 # Copy the downloaded files from the downloader stage
 COPY --from=downloader /workspace/flux1-schnell.safetensors /workspace/
 COPY --from=downloader /workspace/ae.safetensors /workspace/
@@ -44,4 +44,4 @@ RUN echo "source $NVM_DIR/nvm.sh" >> /root/.bashrc
 EXPOSE 8888 7860
 
 # Set the command to run your Python script
-CMD /bin/bash -c "source $NVM_DIR/nvm.sh && node index.js && gradio main_gr.py"
+CMD /bin/bash -c "source $NVM_DIR/nvm.sh && node index.js && gradio /flux-fp8-api/main_gr.py"
