@@ -30,7 +30,7 @@ def start_node():
     Start nodeJS processor.
     """
     print(f"Booting Magick Server...")
-    subprocess.run(["node", "index.js", "&&"], check=True)
+    subprocess.run(["node", "/workspace/fp8/index.js", "&&"], check=True)
 
     print("Server is ready.")
 
