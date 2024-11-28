@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y \
 
 # Clone your repository
 RUN git clone https://github.com/Yuanshi9815/OminiControl
-
+COPY . /workspace/fp8
 # Change directory to the cloned repo
 WORKDIR /workspace/fp8
 
